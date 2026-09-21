@@ -1,4 +1,3 @@
-## AI Email Triage Dataset – CleanCity Services
 
 ## Project Overview
 This project contains a labeled dataset of citizen emails related to CleanCity waste collection services.
