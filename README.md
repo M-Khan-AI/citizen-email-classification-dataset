@@ -1,4 +1,4 @@
-
+Citizen email classification dataset
 ## Project Overview
 This project contains a labeled dataset of citizen emails related to CleanCity waste collection services.
 The dataset is designed to be used for testing and evaluating an LLM-based email classification system. Each email is manually assigned to one of four categories:
