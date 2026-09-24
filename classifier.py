@@ -11,6 +11,14 @@ import os
 import re
 import string
 
+import logging
+import warnings
+
+logging.getLogger("google_genai").setLevel(logging.ERROR)
+logging.getLogger("google.genai").setLevel(logging.ERROR)
+
+warnings.filterwarnings("ignore")
+
 from dotenv import load_dotenv
 from google import genai
 from google.genai import types
@@ -144,8 +152,6 @@ def classify_email(email_text: str) -> str:
 
         result = response.text
 
-        print("RAW GEMINI RESPONSE:", repr(result))
-
         if not result:
             return "Uncertain"
 
@@ -171,4 +177,4 @@ if __name__ == "__main__":
 
     category = classify_email(example_email)
 
-    print("Category:", category)
+    print(category)
