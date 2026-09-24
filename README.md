@@ -19,8 +19,6 @@ citizen-email-classification-dataset/
 ├── prompt.py               # System prompt sent to the model
 ├── email_validator.py      # (email input validation helper)
 ├── emails_labeled.csv       # Sample/labeled email dataset
-├── tests/
-│   └── tests_classifier.py # Pytest suite — mocks the API, no key required to run
 ├── requirements.txt        # Python dependencies
 ├── .env                    # GEMINI_API_KEY (not committed — see .gitignore)
 ├── .gitignore
@@ -52,9 +50,6 @@ Or run the built-in example directly:
 ```bash
 python classifier.py
 ```
-## Testing
-Tests run fully mocked — no real API key or network call needed:
-```bash
 pytest tests/tests_classifier.py -v
 ```
 ## Notes
