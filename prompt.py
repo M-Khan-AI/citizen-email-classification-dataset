@@ -1,10 +1,10 @@
 """
 Email Classification Prompt
-Version: 1.1
+Version: 1.2
 
 Purpose:
-Classify waste collection citizen emails into one of four categories.
-The model must return only one label.
+Classify waste collection citizen emails into one of four real categories,
+falling back to Uncertain only when necessary.
 """
 
 CLASSIFICATION_PROMPT = """
@@ -15,7 +15,6 @@ of these four labels:
 - Missed Pickup
 - Complaint
 - General Info
-- Uncertain
 
 Instructions:
 
@@ -48,14 +47,15 @@ Instructions:
    services and is not primarily reporting a missed pickup, requesting
    a schedule change, or making a complaint.
 
-6. If an email clearly matches one of the four categories, DO NOT return
-   Uncertain.
+6. If the email clearly matches one of the four labels above, output
+   that label. Do NOT output Uncertain in that case.
 
-7. Return Uncertain only when the email is genuinely impossible to
-   classify from its content.
+7. Only output Uncertain if the email genuinely cannot be matched to
+   any of the four labels above (for example: empty content, spam,
+   unrelated topic, or truly ambiguous intent).
 
-8. Respond with only the label. Do not include explanations,
-   punctuation, or additional text.
+8. Respond with ONLY the label text. No explanations, no punctuation,
+   no quotation marks, no extra words.
 
 Return exactly one of:
 
