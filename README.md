@@ -30,13 +30,20 @@ citizen-email-classification-dataset/
    ```bash
    pip install -r requirements.txt
    ```
-3. Create a `.env` file in the project root with your Gemini API key:
-   ```
-   GEMINI_API_KEY=your_key_here
-   GEMINI_MODEL=gemini-3.6-flash
-   ```
-   Get a key from [Google AI Studio](https://aistudio.google.com/).
+## API Key Setup
 
+This project uses the Gemini API.
+
+1. Create a Gemini API key from Google AI Studio.
+2. Create a `.env` file in the project root.
+3. Add your API key to the `.env` file:
+
+GEMINI_API_KEY=your_api_key_here
+GEMINI_MODEL=gemini-3.6-flash
+
+4. Do not share or commit your API key to GitHub.
+5. Make sure `.env` is included in `.gitignore`.
+      ```
 ## Usage
 ```python
 from classifier import classify_email
