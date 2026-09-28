@@ -89,8 +89,9 @@ Run the evaluation yourself with a single command:
 ```bash
 python evaluate.py
 ```
+## Click the following link to go evaluation_report.md
 
-Full results: **[evaluation_report.md](evaluation_report.md)**
+: **[evaluation_report.md](evaluation_report.md)**
 
 Author:
 Muhammad Khan
