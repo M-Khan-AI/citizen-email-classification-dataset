@@ -97,8 +97,9 @@ Run the evaluation yourself with a single command:
 ```bash
 python evaluate.py
 ```
+## Link will lead to evaluation_report.md
 
-Full results: **[evaluation_report.md](evaluation_report.md)**
+: **[evaluation_report.md](evaluation_report.md)**
 
 Author:
 Muhammad Khan
@@ -110,11 +111,3 @@ The main challenge was creating enough realistic and varied emails while keeping
 ---
 ## What Was Left Out
 This task focuses only on creating and labeling the dataset. The LLM classification system, model evaluation, and automated email processing are not included in this dataset creation stage.
-## Repository Contents
----
-citizen-email-classification-dataset
-|
-├── emails_labeled.csv
-|__ emails_validator.py
-|___ README.md
->>>>>>> cc13501b167771036da9ef0abd5016c5de4eb38e
