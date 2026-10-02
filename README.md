@@ -1,8 +1,8 @@
 # Citizen Email Classification
 
-A small tool that classifies incoming citizen emails about waste collection
-into one of four categories using the Gemini API, with an automatic
-`Uncertain` fallback when the intent isn't clear.
+## Project Overview
+This project contains a labeled dataset of citizen emails related to CleanCity waste collection services.
+The dataset is designed to be used for testing and evaluating an LLM-based email classification system. Each email is manually assigned to one of four categories:
 
 ## Categories
 
@@ -33,7 +33,6 @@ citizen-email-classification-dataset/
 ├── .gitignore
 └── README.md
 ```
-
 ## Setup
 
 1. Clone the repo and create a virtual environment:
@@ -46,30 +45,15 @@ citizen-email-classification-dataset/
 2. Install dependencies:
    ```bash
    pip install -r requirements.txt
-   ```
 
-3. Create a `.env` file in the project root with your Gemini API key:
-   ```
-   GEMINI_API_KEY=your_key_here
-   GEMINI_MODEL=gemini-3.6-flash
-   ```
-   Get a key from [Google AI Studio](https://aistudio.google.com/).
+## Api Kye steup   
 
-## Usage
+1. Get a Gemini API key from Google AI Studio.
+2. Create a `.env` file in the project root.
+3. Add `GEMINI_API_KEY=your_api_key_here` to the `.env` file.
+4. Install dependencies using `pip install -r requirements.txt`.
+5. Never upload your `.env` file or API key to GitHub.
 
-```python
-from classifier import classify_email
-
-result = classify_email(
-    "The garbage truck did not arrive today. Please collect our waste."
-)
-print(result)  # -> "Missed Pickup"
-```
-
-Or run the built-in example directly:
-```bash
-python classifier.py
-```
 
 ## Testing
 
@@ -91,7 +75,18 @@ python evaluate.py
 ```
 ## Click the following link to go evaluation_report.md
 
+
 : **[evaluation_report.md](evaluation_report.md)**
 
-Author:
+
+No personally identifiable information or real private customer conversations were included.
+
+## What Was Difficult:
+
+The main challenge was creating enough realistic and varied emails while keeping the four category labels consistent. Some messages could potentially fit more than one category, so each email was reviewed based on its primary purpose and assigned to the most appropriate predefined category.
+
+## What Was Left Out
+This task focuses only on creating and labeling the dataset. The LLM classification system, model evaluation, and automated email processing are not included in this dataset creation stage.
+
+## Author 
 Muhammad Khan
