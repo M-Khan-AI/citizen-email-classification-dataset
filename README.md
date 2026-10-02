@@ -88,5 +88,27 @@ The main challenge was creating enough realistic and varied emails while keeping
 ## What Was Left Out
 This task focuses only on creating and labeling the dataset. The LLM classification system, model evaluation, and automated email processing are not included in this dataset creation stage.
 
+
+# 📧 Citizen Email Classifier & Dashboard
+
+An interactive Streamlit web application that uses the Google Gemini API to classify citizen service emails into standardized categories and present detailed model performance reports.
+---
+
+## 🚀 Features
+
+- **Automated Email Classification:** Paste any citizen inquiry to instantly classify it into service categories (*Schedule Change*, *Missed Pickup*, *Complaint*, *General Info*, or *Uncertain*).
+- **Interactive Evaluation Report:** Toggle the model performance report directly inside the Streamlit UI.
+- **Direct Link & Access:** Access the raw `evaluation_report.md` file directly via the UI or GitHub repository link.
+
+---
+
+## 🛠️ Tech Stack
+
+- **Frontend / UI:** Streamlit
+- **Backend / AI:** Python, Google Gemini API (`google-genai`)
+- **Environment Management:** `python-dotenv`
+---
+
+
 ## Author 
 Muhammad Khan
