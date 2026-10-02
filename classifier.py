@@ -147,8 +147,8 @@ def classify_email(email_text: str) -> str:
         # since some SDK versions raise instead of returning None when
         # there are no candidates (e.g. safety block, empty finish).
         if not getattr(response, "candidates", None):
-            print("Gemini returned no candidates (possibly blocked).")
-            return "Uncertain"
+            print("Gemini returned no candidates (possibly blocked or busy).")
+            return "Model busy, please try again"
 
         result = response.text
 
@@ -159,7 +159,7 @@ def classify_email(email_text: str) -> str:
 
     except Exception as error:
         print(f"Classification API error: {error}")
-        return "Uncertain"
+        return "Mode busy, Please try again"
 
 
 # ==========================================
