@@ -96,9 +96,9 @@ An interactive Streamlit web application that uses the Google Gemini API to clas
 
 ## 🚀 Features
 
-- **Automated Email Classification:** Paste any citizen inquiry to instantly classify it into service categories (*Schedule Change*, *Missed Pickup*, *Complaint*, *General Info*, or *Uncertain*).
-- **Interactive Evaluation Report:** Toggle the model performance report directly inside the Streamlit UI.
-- **Direct Link & Access:** Access the raw `evaluation_report.md` file directly via the UI or GitHub repository link.
+-Automated Email Classification:** Paste any citizen inquiry to instantly classify it into service categories (*Schedule Change*, *Missed Pickup*, *Complaint*, *General Info*, or *Uncertain*).
+-  Interactive Evaluation Report:** Toggle the model performance report directly inside the Streamlit UI.
+- Direct Link & Access:** Access the raw `evaluation_report.md` file directly via the UI or GitHub repository link.
 
 ---
 
