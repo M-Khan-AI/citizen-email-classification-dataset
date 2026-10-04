@@ -204,10 +204,10 @@ python evaluate.py
 
 
 No personally identifiable information or real private customer conversations were included.
-# 📧 Citizen Email Classifier & Dashboard
+
+## 📧 Citizen Email Classifier & Dashboard
 
 An interactive Streamlit web application that uses the Google Gemini API to classify citizen service emails into standardized categories and present detailed model performance reports.
----
 
 ## 🚀 Features
 
@@ -226,7 +226,7 @@ An interactive Streamlit web application that uses the Google Gemini API to clas
 
 ## License
 
-This project is licensed under the [MIT License](LICENSE).
+This project is licensed under the [MIT License](LICENSE.md).
 
 ## Author 
 Muhammad Khan
