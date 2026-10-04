@@ -6,6 +6,8 @@ The dataset is designed to be used for testing and evaluating an LLM-based email
 
 ## Categories
 
+System receives citizen emails and classifies them into categories such as:
+
 | Label | Meaning |
 |---|---|
 | `Schedule Change` | Citizen wants to change, request, confirm, or ask about pickup timing |
@@ -13,6 +15,20 @@ The dataset is designed to be used for testing and evaluating an LLM-based email
 | `Complaint` | Service issue not primarily a missed pickup or schedule change |
 | `General Info` | General question about the service |
 | `Uncertain` | Fallback when the email can't be confidently classified |
+
+## Project goal
+
+The goal of this project is to automatically categorize citizen emails for CleanCity Services, helping staff process incoming waste-service requests more efficiently.
+
+## Main features
+
+LLM-based email classification
+Four email categories
+Fallback keyword classification
+API error handling
+Evaluation using accuracy, precision, and recall
+Unit tests
+Interactive dashboard, if you implemented one
 
 ## Project Structure
 
@@ -31,20 +47,23 @@ citizen-email-classification-dataset/
 ├── requirements.txt        # Python dependencies
 ├── .env                    # GEMINI_API_KEY (not committed — see .gitignore)
 ├── .gitignore
-└── README.md
+├── README.md
+├── HANDOVER.md
+└── LICENSE.md
 ```
 ## Setup
 
-1. Clone the repo and create a virtual environment:
-   ```bash
-   python -m venv .venv
-   .venv\Scripts\activate      # Windows
-   source .venv/bin/activate   # macOS/Linux
-   ```
+Installation
 
-2. Install dependencies:
-   ```bash
-   pip install -r requirements.txt
+Clone repository
+git clone <your-github-repository-url>
+cd clean-city-email-classifier
+Create virtual environment
+python -m venv .venv
+Activate it on Windows
+.venv\Scripts\activate
+Install dependencies
+pip install -r requirements.txt
 
 ## Api Kye steup   
 
@@ -53,6 +72,111 @@ citizen-email-classification-dataset/
 3. Add `GEMINI_API_KEY=your_api_key_here` to the `.env` file.
 4. Install dependencies using `pip install -r requirements.txt`.
 5. Never upload your `.env` file or API key to GitHub.
+
+## Usage
+
+python classifier.py
+
+explain what the user should expect.
+
+You might show:
+
+Input:
+"Our garbage was not collected yesterday."
+
+Output:
+Missed Pickup
+
+If you have an evaluation script:
+
+python evaluate.py
+
+explain:
+
+This command runs the classifier on the 200-email dataset and calculates accuracy, precision, and recall.
+
+If you have a Streamlit dashboard:
+
+streamlit run app.py
+
+explain that this starts the web interface.
+
+If you have tests:
+
+pytest
+
+explain that this runs the automated tests.
+
+## Troubleshooting
+
+It means you should document common problems and their solutions.
+
+For example:
+
+API key error
+
+Problem:
+
+API key not found
+
+Solution:
+
+Check that your .env file exists and contains:
+
+GEMINI_API_KEY=your_api_key_here
+Missing package
+
+Problem:
+
+ModuleNotFoundError
+
+Solution:
+
+Make sure your virtual environment is activated and run:
+
+pip install -r requirements.txt
+Streamlit doesn't start
+
+Problem:
+
+'streamlit' is not recognized
+
+Solution:
+
+Run:
+
+pip install streamlit
+
+Then:
+
+streamlit run app.py
+Tests fail
+
+Problem:
+
+pytest: command not found
+
+Solution:
+
+pip install pytest
+
+Then:
+
+pytest
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ## Testing
@@ -80,15 +204,6 @@ python evaluate.py
 
 
 No personally identifiable information or real private customer conversations were included.
-
-## What Was Difficult:
-
-The main challenge was creating enough realistic and varied emails while keeping the four category labels consistent. Some messages could potentially fit more than one category, so each email was reviewed based on its primary purpose and assigned to the most appropriate predefined category.
-
-## What Was Left Out
-This task focuses only on creating and labeling the dataset. The LLM classification system, model evaluation, and automated email processing are not included in this dataset creation stage.
-
-
 # 📧 Citizen Email Classifier & Dashboard
 
 An interactive Streamlit web application that uses the Google Gemini API to classify citizen service emails into standardized categories and present detailed model performance reports.
@@ -100,7 +215,7 @@ An interactive Streamlit web application that uses the Google Gemini API to clas
 -  Interactive Evaluation Report:** Toggle the model performance report directly inside the Streamlit UI.
 - Direct Link & Access:** Access the raw `evaluation_report.md` file directly via the UI or GitHub repository link.
 
----
+--- 
 
 ## 🛠️ Tech Stack
 
@@ -109,6 +224,9 @@ An interactive Streamlit web application that uses the Google Gemini API to clas
 - **Environment Management:** `python-dotenv`
 ---
 
+## License
+
+This project is licensed under the [MIT License](LICENSE).
 
 ## Author 
 Muhammad Khan
