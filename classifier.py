@@ -7,17 +7,11 @@ Function:
 Returns one valid category label or "Uncertain".
 """
 
+import logging
 import os
 import re
 import string
-
-import logging
 import warnings
-
-logging.getLogger("google_genai").setLevel(logging.ERROR)
-logging.getLogger("google.genai").setLevel(logging.ERROR)
-
-warnings.filterwarnings("ignore")
 
 from dotenv import load_dotenv
 from google import genai
@@ -25,6 +19,10 @@ from google.genai import types
 
 from prompt import CLASSIFICATION_PROMPT
 
+logging.getLogger("google_genai").setLevel(logging.ERROR)
+logging.getLogger("google.genai").setLevel(logging.ERROR)
+
+warnings.filterwarnings("ignore")
 
 # ==========================================
 # Load environment variables

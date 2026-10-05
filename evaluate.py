@@ -29,7 +29,9 @@ from report import build_report
 REAL_LABELS = sorted(VALID_LABELS - {"Uncertain"})
 
 
-def run_classification(df: pd.DataFrame, limit: int | None, delay: float) -> pd.DataFrame:
+def run_classification(
+    df: pd.DataFrame, limit: int | None, delay: float
+) -> pd.DataFrame:
     """Run classify_email() on every row and add a predicted_label column."""
     if limit:
         df = df.head(limit).copy()
@@ -63,11 +65,31 @@ def apply_fallback(df: pd.DataFrame) -> pd.DataFrame:
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Evaluate classify_email() on a labeled dataset.")
-    parser.add_argument("--input", default="emails_labeled.csv", help="Path to labeled CSV")
-    parser.add_argument("--output", default="evaluation_report.md", help="Path to write the markdown report")
-    parser.add_argument("--limit", type=int, default=None, help="Only evaluate the first N rows (for quick tests)")
-    parser.add_argument("--delay", type=float, default=0.0, help="Seconds to sleep between API calls (avoid rate limits)")
+    parser = argparse.ArgumentParser(
+        description="Evaluate classify_email() on a labeled dataset."
+    )
+    parser.add_argument(
+        "--input",
+        default="emails_labeled.csv",
+        help="Path to labeled CSV",
+    )
+    parser.add_argument(
+        "--output",
+        default="evaluation_report.md",
+        help="Path to write the markdown report",
+    )
+    parser.add_argument(
+        "--limit",
+        type=int,
+        default=None,
+        help="Only evaluate the first N rows (for quick tests)",
+    )
+    parser.add_argument(
+        "--delay",
+        type=float,
+        default=0.0,
+        help="Seconds to sleep between API calls (avoid rate limits)",
+    )
     args = parser.parse_args()
 
     try:

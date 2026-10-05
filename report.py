@@ -8,10 +8,16 @@ cases, fallback effectiveness, and a confusion matrix.
 """
 
 import pandas as pd
-from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
+from sklearn.metrics import (
+    accuracy_score,
+    classification_report,
+    confusion_matrix,
+)
 
 
-def build_report(df: pd.DataFrame, output_path: str, real_labels: list[str]) -> None:
+def build_report(
+    df: pd.DataFrame, output_path: str, real_labels: list[str]
+) -> None:
     """
     Write a markdown evaluation report to output_path.
 
@@ -30,10 +36,18 @@ def build_report(df: pd.DataFrame, output_path: str, real_labels: list[str]) -> 
     acc_final = accuracy_score(y_true, y_pred_final)
 
     report_model = classification_report(
-        y_true, y_pred_model, labels=real_labels, output_dict=True, zero_division=0
+        y_true,
+        y_pred_model,
+        labels=real_labels,
+        output_dict=True,
+        zero_division=0,
     )
     report_final = classification_report(
-        y_true, y_pred_final, labels=real_labels, output_dict=True, zero_division=0
+        y_true,
+        y_pred_final,
+        labels=real_labels,
+        output_dict=True,
+        zero_division=0,
     )
 
     uncertain_rows = df[df["predicted_label"] == "Uncertain"]
@@ -47,7 +61,9 @@ def build_report(df: pd.DataFrame, output_path: str, real_labels: list[str]) -> 
     lines.append("## Overall Accuracy\n")
     lines.append("| Stage | Accuracy |")
     lines.append("|---|---|")
-    lines.append(f"| Model only (raw `classify_email()` output) | {acc_model:.1%} |")
+    lines.append(
+        f"| Model only (raw `classify_email()` output) | {acc_model:.1%} |"
+    )
     lines.append(f"| Model + keyword fallback | {acc_final:.1%} |")
     lines.append("")
     threshold_note = (
@@ -83,16 +99,22 @@ def build_report(df: pd.DataFrame, output_path: str, real_labels: list[str]) -> 
 
     # --- Uncertain cases ---
     lines.append("## Cases Returned as 'Uncertain' by the Model\n")
-    lines.append(f"Total: **{len(uncertain_rows)}** out of {len(df)} emails.\n")
+    lines.append(
+        f"Total: **{len(uncertain_rows)}** out of {len(df)} emails.\n"
+    )
     if len(uncertain_rows) > 0:
         lines.append("| True Label | Email (truncated) |")
         lines.append("|---|---|")
         for _, row in uncertain_rows.iterrows():
-            snippet = row["email_text"][:100].replace("\n", " ").replace("|", "/")
+            snippet = (
+                row["email_text"][:100].replace("\n", " ").replace("|", "/")
+            )
             lines.append(f"| {row['label']} | {snippet}... |")
         lines.append("")
     else:
-        lines.append("None — the model returned a real label for every email.\n")
+        lines.append(
+            "None — the model returned a real label for every email.\n"
+        )
 
     # --- Fallback logic explanation ---
     lines.append("## Fallback Logic\n")
@@ -108,10 +130,12 @@ def build_report(df: pd.DataFrame, output_path: str, real_labels: list[str]) -> 
         "The first matching category wins. If no keyword matches, the "
         "email stays `\"Uncertain\"`.\n"
     )
+    resolved = len(uncertain_rows) - len(still_uncertain_rows)
     lines.append(
-        f"This fallback resolved **{len(uncertain_rows) - len(still_uncertain_rows)}** "
+        f"This fallback resolved **{resolved}** "
         f"of the **{len(uncertain_rows)}** Uncertain cases; "
-        f"**{len(still_uncertain_rows)}** remained Uncertain after the fallback.\n"
+        f"**{len(still_uncertain_rows)}** remained Uncertain "
+        "after the fallback.\n"
     )
 
     # --- Confusion matrix (model only) ---
